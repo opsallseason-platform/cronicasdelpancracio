@@ -1,0 +1,175 @@
+:root {
+  color-scheme: dark;
+  --paper: #f2eee5;
+  --muted: #d1cfc8;
+  --page-gutter: clamp(1.5rem, 5.5vw, 6.5rem);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: #171716;
+}
+
+body {
+  margin: 0;
+  color: var(--paper);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+p,
+h1 {
+  margin: 0;
+}
+
+::selection {
+  background: var(--paper);
+  color: #171716;
+}
+
+.landing {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 46rem;
+  min-height: max(46rem, 100svh);
+  padding: 0 var(--page-gutter);
+}
+
+.landing-photograph {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  overflow: hidden;
+  background: #171716;
+}
+
+.landing-image {
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+
+/* Keep the original photograph visible while giving the type a quiet ground. */
+.landing-photograph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgb(12 12 11 / 48%) 0%,
+    rgb(12 12 11 / 28%) 30%,
+    rgb(12 12 11 / 64%) 65%,
+    rgb(12 12 11 / 84%) 100%
+  );
+}
+
+.masthead,
+.colophon {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.masthead {
+  padding-top: 2.5rem;
+  font-size: 0.6875rem;
+  line-height: 1.5;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.introduction {
+  align-self: end;
+  padding-top: 12rem;
+  padding-bottom: clamp(4rem, 9vh, 7rem);
+}
+
+.introduction h1 {
+  font-family: "Times New Roman", Times, serif;
+  font-size: clamp(4.5rem, 8.5vw, 9rem);
+  font-weight: 400;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+}
+
+.introduction h1 span {
+  display: block;
+}
+
+.description {
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+  line-height: 1.8;
+}
+
+.author {
+  color: var(--paper);
+  white-space: nowrap;
+}
+
+.colophon {
+  border-top: 1px solid rgb(242 238 229 / 28%);
+  padding: 1.5rem 0 2rem;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.launch-status {
+  color: var(--paper);
+  font-size: 0.625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 600px) {
+  .landing {
+    min-height: max(40rem, 100svh);
+  }
+
+  .landing-image {
+    object-position: 48% 30%;
+  }
+
+  .masthead {
+    padding-top: 1.75rem;
+    font-size: 0.5625rem;
+    letter-spacing: 0.12em;
+  }
+
+  .introduction {
+    padding-top: 14rem;
+    padding-bottom: 3.5rem;
+  }
+
+  .introduction h1 {
+    font-size: clamp(2.75rem, 12.2vw, 4.5rem);
+    line-height: 1.04;
+    letter-spacing: -0.05em;
+  }
+
+  .description {
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.75;
+  }
+
+  .colophon {
+    padding-bottom: 1.5rem;
+    font-size: 0.6875rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .description br {
+    display: none;
+  }
+}
